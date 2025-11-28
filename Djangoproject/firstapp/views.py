@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .forms import ShoesForm
-from .forms import ClothesForm
+from .models import Shoes
+
 
 
 
@@ -18,7 +19,7 @@ def createShoes(request):
         form=ShoesForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('home')
+            return redirect("fetchAll")
     context={"form":form}         
     return render(request, "forms.html",context)
 
@@ -34,3 +35,8 @@ def createClothes(request):
         
     return render(request, "forms.html",context)
 
+def fetchAllShoes(request):
+    shoes=Shoes.objects.all()
+    print(f"==>{shoes}")
+    context={"shoes":shoes}
+    return render(request,"home.html" , context)

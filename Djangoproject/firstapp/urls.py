@@ -5,6 +5,7 @@ urlpatterns =[
     path('', views.home, name='home'),
     path('create-shoes/', views.createShoes,name='create-shoes'),
     path('create-clothes/', views.createClothes,name='create-clothes'),
+     path('shoes',views.fetchAllShoes,name='fetchAll')
     
 ]
 
