@@ -9,6 +9,9 @@ class Shoes(models.Model):
     created_at=models.DateField(auto_now_add=True)
     updated_at=models.DateField(auto_now=True)
     
+    def __str__(self):
+        return self.name
+    
 class Clothes(models.Model):
     name=models.CharField(max_length=200)
     description=models.CharField(max_length=255)
@@ -17,5 +20,7 @@ class Clothes(models.Model):
     created_at=models.DateField(auto_now_add=True)
     updated_at=models.DateField(auto_now=True)
     
+    def __str__(self):
+        return self.name
     
     
