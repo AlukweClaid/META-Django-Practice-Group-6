@@ -3,5 +3,15 @@
 <div class="my-5">
     <h1>Welcome to Projectdjango</h1>
     <p>This is the main page.</p>
+    <hr>
+<div>
+        {% for shoes in shoes %}
+    <div class="display-5">{{shoes.name}}</div>
+        <p class="lead">{{shoes.description}}</p>
+        <div class="badge bg-dark">ksh. {{shoes.price}}</div>
+        <hr>
+      {% endfor %}
+    </div>
 </div>
+
 {% endblock %}
