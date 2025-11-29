@@ -1,0 +1,14 @@
+{% extends 'main.html' %}
+{% block content %}
+<div class="my-5">
+    <h2>{{ shoe.name }}</h2>
+    <p>{{ shoe.description }}</p>
+    <p><strong>Price:</strong> ksh. {{ shoe.price }}</p>
+    <p><strong>Color:</strong> {{ shoe.color }}</p>
+    <div class="mt-3">
+        <a href="{% url 'update-shoes' shoe.pk %}" class="btn btn-warning">Edit</a>
+        <a href="{% url 'delete-shoes' shoe.pk %}" class="btn btn-danger">Delete</a>
+        <a href="{% url 'fetchAll' %}" class="btn btn-secondary">Back to list</a>
+    </div>
+</div>
+{% endblock %}
