@@ -1,17 +1,58 @@
 {% extends 'main.html' %}
 {% block content %}
 <div class="my-5">
-    <h1>Welcome to Projectdjango</h1>
-    <p>This is the main page.</p>
-    <hr>
-<div>
-        {% for shoes in shoes %}
-    <div class="display-5">{{shoes.name}}</div>
-        <p class="lead">{{shoes.description}}</p>
-        <div class="badge bg-dark">ksh. {{shoes.price}}</div>
-        <hr>
-      {% endfor %}
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1>Welcome to shoehub</h1>
+        <div>
+            <a href="{% url 'create-shoes' %}" class="btn btn-primary">Add Shoes</a>
+            <a href="{% url 'create-clothes' %}" class="btn btn-secondary">Add Clothes</a>
+        </div>
     </div>
+
+    {% if shoes %}
+    <h3>Shoes</h3>
+    {% for shoe in shoes %}
+    <div class="card mb-3 p-3">
+        <div class="d-flex justify-content-between align-items-start">
+            <div>
+                <h4>{{ shoe.name }}</h4>
+                <p class="mb-1">{{ shoe.description }}</p>
+                <div class="badge bg-dark">ksh. {{ shoe.price }}</div>
+            </div>
+            <div>
+                <a href="{% url 'shoes-detail' shoe.pk %}" class="btn btn-sm btn-info">View</a>
+                <a href="{% url 'update-shoes' shoe.pk %}" class="btn btn-sm btn-warning">Edit</a>
+                <a href="{% url 'delete-shoes' shoe.pk %}" class="btn btn-sm btn-danger">Delete</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    {% if clothes %}
+    <h3>Clothes</h3>
+    {% for cloth in clothes %}
+    <div class="card mb-3 p-3">
+        <div class="d-flex justify-content-between align-items-start">
+            <div>
+                <h4>{{ cloth.name }}</h4>
+                <p class="mb-1">{{ cloth.description }}</p>
+                <div class="badge bg-dark">ksh. {{ cloth.price }}</div>
+            </div>
+            <div>
+                <a href="{% url 'clothes-detail' cloth.pk %}" class="btn btn-sm btn-info">View</a>
+                <a href="{% url 'update-clothes' cloth.pk %}" class="btn btn-sm btn-warning">Edit</a>
+                <a href="{% url 'delete-clothes' cloth.pk %}" class="btn btn-sm btn-danger">Delete</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    {% if not shoes and not clothes %}
+    <p>No items yet. Use the buttons above to add products.</p>
+    {% endif %}
+
 </div>
 
 {% endblock %}

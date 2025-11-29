@@ -1,0 +1,12 @@
+{% extends 'main.html' %}
+{% block content %}
+<div class="my-5">
+    <h3>Delete {{ shoe.name }}?</h3>
+    <p>This action cannot be undone.</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Confirm Delete</button>
+        <a href="{% url 'fetchAll' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}

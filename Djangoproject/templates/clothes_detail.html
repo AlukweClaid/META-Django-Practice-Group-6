@@ -1,0 +1,14 @@
+{% extends 'main.html' %}
+{% block content %}
+<div class="my-5">
+    <h2>{{ cloth.name }}</h2>
+    <p>{{ cloth.description }}</p>
+    <p><strong>Price:</strong> ksh. {{ cloth.price }}</p>
+    <p><strong>Color:</strong> {{ cloth.color }}</p>
+    <div class="mt-3">
+        <a href="{% url 'update-clothes' cloth.pk %}" class="btn btn-warning">Edit</a>
+        <a href="{% url 'delete-clothes' cloth.pk %}" class="btn btn-danger">Delete</a>
+        <a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
+    </div>
+</div>
+{% endblock %}
