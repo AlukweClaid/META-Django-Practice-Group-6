@@ -1,0 +1,18 @@
+{% extends 'main.html' %}
+{% block content %}
+<div class="my-5">
+    <h1>Welcome to my shoehub</h1>
+    <p>Where fit meets design.</p>
+    <hr>
+<div>
+        {% for shoes in shoes %}
+    <div class="display-5">{{shoes.name}}</div>
+        <p class="lead">{{shoes.description}}</p>
+        <div class="badge bg-dark">ksh. {{shoes.price}}</div>
+        <a href="{% url 'read-one-shoes' shoes.id %}" class="text-decoration-none bg-warning">see more</a>
+        <hr>
+      {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
